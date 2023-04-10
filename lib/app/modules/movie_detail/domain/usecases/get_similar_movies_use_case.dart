@@ -3,12 +3,12 @@ import 'package:movies_flutter/app/modules/movie_detail/domain/repositories/movi
 import 'package:movies_flutter/app/modules/shared/domain/usecases/base_usecase.dart';
 
 class GetSimilarMoviesUseCase extends UseCase<List<Movie>, NoParams> {
-  final MovieRepository repository;
+  final MovieRepository _repository;
 
-  GetSimilarMoviesUseCase(this.repository);
+  GetSimilarMoviesUseCase(this._repository);
 
   @override
   AsyncResult<List<Movie>> call(NoParams params) {
-    return repository.getSimilarMovies();
+    return _repository.getSimilarMovies();
   }
 }
