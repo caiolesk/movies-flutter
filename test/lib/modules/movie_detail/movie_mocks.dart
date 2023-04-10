@@ -13,6 +13,8 @@ final movieMock = Movie(
   id: 1,
 );
 
+final listMoviesMock = [movieMock];
+
 final movieId = 1;
 
 final movieParams = GetMovieDetailsParams(1);
