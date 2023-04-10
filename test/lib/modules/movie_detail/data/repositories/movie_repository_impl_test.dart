@@ -41,20 +41,20 @@ void main() {
   group('when the datasource method [getSimilarMovies] is called', () {
     test('when return is successful', () async {
       //arrange
-      when(() => mockMovieDataSouce.getSimilarMovies())
+      when(() => mockMovieDataSouce.getSimilarMovies(any()))
           .thenAnswer((_) async => listMoviesMock);
       //act
-      final result = await repository.getSimilarMovies();
+      final result = await repository.getSimilarMovies(movieParams);
       //assert
       expect(result, Right(listMoviesMock));
     });
 
     test('when return is unsuccessful', () async {
       //arrange
-      when(() => mockMovieDataSouce.getSimilarMovies())
+      when(() => mockMovieDataSouce.getSimilarMovies(any()))
           .thenThrow(exceptionMock);
       //act
-      final result = await repository.getSimilarMovies();
+      final result = await repository.getSimilarMovies(movieParams);
       //assert
       expect(result, Left(failureMock));
     });

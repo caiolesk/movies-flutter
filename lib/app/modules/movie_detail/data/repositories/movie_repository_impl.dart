@@ -1,5 +1,5 @@
 import 'package:dartz/dartz.dart';
-import 'package:movies_flutter/app/modules/shared/domain/models/Failure.dart';
+import 'package:movies_flutter/app/modules/shared/domain/errors/Failure.dart';
 
 import '../../../shared/domain/usecases/base_usecase.dart';
 import '../../domain/entities/movie.dart';
@@ -23,9 +23,10 @@ class MovieRepositoryImpl implements MovieRepository {
   }
 
   @override
-  AsyncResult<List<Movie>> getSimilarMovies() async {
+  AsyncResult<List<Movie>> getSimilarMovies(
+      GetMovieDetailsParams params) async {
     try {
-      final result = await _dataSource.getSimilarMovies();
+      final result = await _dataSource.getSimilarMovies(params);
       return Right(result);
     } catch (error) {
       return Left(Failure(exception: error));
