@@ -54,10 +54,11 @@ class MovieDataSourceImpl implements MovieDataSource {
       );
 
       try {
-        final movies =
-            (response.data as List).map((e) => MovieModel.fromJson(e));
+        final movies = (response.data['results'] as List)
+            .map((e) => MovieModel.fromJson(e))
+            .toList();
 
-        return movies.toList();
+        return movies;
       } catch (error) {
         throw const ParseDataException(
           'Error ParseDataException - [getMovieDetails]',

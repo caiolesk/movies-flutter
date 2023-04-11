@@ -50,15 +50,18 @@ final Map<String, dynamic> movieModelJson = {
   "id": 1,
 };
 
-final listMovieModelJson = [
-  {
-    "original_title": "Teste",
-    "backdrop_path": "url/photo",
-    "vote_count": 10,
-    "release_date": '2000-02-20',
-    "id": 1,
-  },
-];
+final listMovieModelJson = {
+  'results': [
+    {
+      "original_title": "Teste",
+      "backdrop_path": "url/photo",
+      "poster_path": "url/photo",
+      "vote_count": 10,
+      "release_date": '2000-02-20',
+      "id": 1,
+    },
+  ],
+};
 
 final exceptionMock = Exception();
 

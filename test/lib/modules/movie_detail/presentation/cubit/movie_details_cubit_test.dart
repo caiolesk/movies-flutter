@@ -25,6 +25,8 @@ void main() {
     setUp(() {
       when(() => mockGetMovieDetailsUseCase(any()))
           .thenAnswer((_) async => Right(movieMock));
+      when(() => mockGetSimilarMoviesUseCase(any()))
+          .thenAnswer((_) async => Right(listMoviesMock));
     });
 
     test('should init with loading state', () async {
@@ -47,11 +49,20 @@ void main() {
       //assert
       expect(cubit.state.movie, movieMock);
     });
+
+    test('should return a state with list similar movies', () async {
+      //act
+      await cubit.fetchData();
+      //assert
+      expect(cubit.state.similarMovies, listMoviesMock);
+    });
   });
 
   group('when [fetchData] is unsucessful', () {
     setUp(() {
       when(() => mockGetMovieDetailsUseCase(any()))
+          .thenAnswer((_) async => Left(failureMock));
+      when(() => mockGetSimilarMoviesUseCase(any()))
           .thenAnswer((_) async => Left(failureMock));
     });
     test('should return state with failure', () async {
