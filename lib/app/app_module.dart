@@ -1,5 +1,6 @@
 import 'package:flutter_modular/flutter_modular.dart';
 
+import 'modules/movie_detail/presentation/cubit/movie_details_cubit.dart';
 import 'modules/movie_detail/presentation/movie_details_module.dart';
 
 class AppModule extends Module {
@@ -8,6 +9,9 @@ class AppModule extends Module {
 
   @override
   final List<ModularRoute> routes = [
-    ModuleRoute(Modular.initialRoute, module: MovieDetailsModule())
+    ModuleRoute(
+      Modular.initialRoute,
+      module: MovieDetailsModule(),
+    ),
   ];
 }

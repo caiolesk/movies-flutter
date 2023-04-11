@@ -11,18 +11,18 @@ class MovieDetailsModule extends Module {
   @override
   List<Bind<Object>> get binds => [
         Bind(
-          (i) => MovieDetailsCubit(
-            getMovieDetailsUseCase: i(),
-            getSimilarMoviesUseCase: i(),
-          ),
-        ),
-        Bind((i) => GetMovieDetailsUseCase(i())),
-        Bind((i) => GetSimilarMoviesUseCase(i())),
-        Bind((i) => MovieRepositoryImpl(i())),
-        Bind(
           (i) => MovieDataSourceImpl(
             dio: i(),
             appNetwork: i(),
+          ),
+        ),
+        Bind((i) => MovieRepositoryImpl(i())),
+        Bind((i) => GetMovieDetailsUseCase(i())),
+        Bind((i) => GetSimilarMoviesUseCase(i())),
+        Bind(
+          (i) => MovieDetailsCubit(
+            getMovieDetailsUseCase: i(),
+            getSimilarMoviesUseCase: i(),
           ),
         ),
       ];
