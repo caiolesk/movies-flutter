@@ -19,7 +19,7 @@ class MovieDetailsModule extends Module {
         Bind((i) => MovieRepositoryImpl(i())),
         Bind((i) => GetMovieDetailsUseCase(i())),
         Bind((i) => GetSimilarMoviesUseCase(i())),
-        Bind(
+        Bind.lazySingleton(
           (i) => MovieDetailsCubit(
             getMovieDetailsUseCase: i(),
             getSimilarMoviesUseCase: i(),

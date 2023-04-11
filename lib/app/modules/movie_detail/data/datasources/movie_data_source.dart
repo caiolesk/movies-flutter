@@ -25,7 +25,8 @@ class MovieDataSourceImpl implements MovieDataSource {
   Future<Movie> getMovieDetails(GetMovieDetailsParams params) async {
     try {
       final response = await _dio.get(
-        '${_appNetwork.getMovieDetails}${params.movieId}${_appNetwork.apiKeyPath}',
+        '${_appNetwork.getMovieDetails}${params.movieId}',
+        queryParameters: {'api_key': _appNetwork.apiKey},
       );
 
       try {
@@ -48,7 +49,8 @@ class MovieDataSourceImpl implements MovieDataSource {
   Future<List<Movie>> getSimilarMovies(GetMovieDetailsParams params) async {
     try {
       final response = await _dio.get(
-        '${_appNetwork.getMovieDetails}${params.movieId}${_appNetwork.getSimilarMovies}${_appNetwork.apiKeyPath}',
+        '${_appNetwork.getMovieDetails}${params.movieId}${_appNetwork.getSimilarMovies}',
+        queryParameters: {'api_key': _appNetwork.apiKey},
       );
 
       try {

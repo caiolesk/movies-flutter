@@ -24,7 +24,10 @@ void main() {
   group('when method [getMovieDetails] is called', () {
     test('when method return success with movie data', () async {
       //arrange
-      when(() => mockDio.get(any())).thenAnswer((_) async => Response(
+      when(() => mockDio.get(
+            any(),
+            queryParameters: any(named: 'queryParameters'),
+          )).thenAnswer((_) async => Response(
             statusCode: 200,
             requestOptions: RequestOptions(),
             data: movieModelJson,
@@ -37,8 +40,10 @@ void main() {
 
     test('when call throw an DioError', () async {
       //arrange
-      when(() => mockDio.get(any()))
-          .thenThrow(DioError(requestOptions: RequestOptions()));
+      when(() => mockDio.get(
+            any(),
+            queryParameters: any(named: 'queryParameters'),
+          )).thenThrow(DioError(requestOptions: RequestOptions()));
       //act
       final result = dataSource.getMovieDetails(movieParams);
       //assert
@@ -49,7 +54,10 @@ void main() {
   group('when method [getSimilarMovies] is called', () {
     test('when method return success with movie data', () async {
       //arrange
-      when(() => mockDio.get(any())).thenAnswer((_) async => Response(
+      when(() => mockDio.get(
+            any(),
+            queryParameters: any(named: 'queryParameters'),
+          )).thenAnswer((_) async => Response(
             statusCode: 200,
             requestOptions: RequestOptions(),
             data: listMovieModelJson,
@@ -62,8 +70,10 @@ void main() {
 
     test('when call throw an DioError', () async {
       //arrange
-      when(() => mockDio.get(any()))
-          .thenThrow(DioError(requestOptions: RequestOptions()));
+      when(() => mockDio.get(
+            any(),
+            queryParameters: any(named: 'queryParameters'),
+          )).thenThrow(DioError(requestOptions: RequestOptions()));
       //act
       final result = dataSource.getSimilarMovies(movieParams);
       //assert

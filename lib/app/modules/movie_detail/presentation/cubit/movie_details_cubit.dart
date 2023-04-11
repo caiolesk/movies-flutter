@@ -17,7 +17,7 @@ class MovieDetailsCubit extends Cubit<MovieDetailsState> {
   Future<void> fetchData() async {
     emit(state.copyWith(status: Status.loading));
 
-    final result = await getMovieDetailsUseCase(GetMovieDetailsParams(1));
+    final result = await getMovieDetailsUseCase(GetMovieDetailsParams(12));
     result.fold(
       (failure) {
         emit(state.copyWith(

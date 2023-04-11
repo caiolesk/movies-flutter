@@ -24,6 +24,7 @@ final movieMock = Movie(
   originalTitle: 'title',
   posterPath: 'url/photo',
   voteCount: 10,
+  releaseDate: '2000-02-20',
   id: 1,
 );
 
@@ -37,21 +38,24 @@ final movieModel = MovieModel(
   originalTitle: 'title',
   posterPath: 'url/photo',
   voteCount: 10,
+  releaseDate: '2000-02-20',
   id: 1,
 );
 
 final Map<String, dynamic> movieModelJson = {
   "original_title": "Teste",
-  "poster_path": "url/photo",
+  "backdrop_path": "url/photo",
   "vote_count": 10,
+  "release_date": '2000-02-20',
   "id": 1,
 };
 
 final listMovieModelJson = [
   {
     "original_title": "Teste",
-    "poster_path": "url/photo",
+    "backdrop_path": "url/photo",
     "vote_count": 10,
+    "release_date": '2000-02-20',
     "id": 1,
   },
 ];
