@@ -1,12 +1,12 @@
 import '../../domain/entities/movie.dart';
 
 class MovieModel extends Movie {
-  MovieModel(
-      {required String originalTitle,
-      required String posterPath,
-      required int voteCount,
-      required int id})
-      : super(
+  MovieModel({
+    required String originalTitle,
+    required String posterPath,
+    required int voteCount,
+    required int id,
+  }) : super(
           originalTitle: originalTitle,
           posterPath: posterPath,
           voteCount: voteCount,

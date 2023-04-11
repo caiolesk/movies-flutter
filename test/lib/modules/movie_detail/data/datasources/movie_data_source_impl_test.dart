@@ -1,10 +1,7 @@
-import 'dart:convert';
-
 import 'package:dio/dio.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';
 import 'package:movies_flutter/app/modules/movie_detail/data/datasources/movie_data_source.dart';
-import 'package:movies_flutter/app/modules/movie_detail/data/models/movie_model.dart';
 import 'package:movies_flutter/app/modules/movie_detail/domain/entities/movie.dart';
 import 'package:movies_flutter/app/modules/shared/data/errors/failures.dart';
 import 'package:movies_flutter/app/modules/shared/network/app_network.dart';

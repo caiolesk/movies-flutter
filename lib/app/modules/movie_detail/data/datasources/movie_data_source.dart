@@ -1,13 +1,10 @@
-// ignore_for_file: public_member_api_docs, sort_constructors_first
-import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
-import 'package:movies_flutter/app/modules/movie_detail/data/models/movie_model.dart';
-import 'package:movies_flutter/app/modules/shared/data/errors/failures.dart';
 
-import 'package:movies_flutter/app/modules/shared/network/app_network.dart';
-
+import '../../../shared/data/errors/failures.dart';
+import '../../../shared/network/app_network.dart';
 import '../../domain/entities/movie.dart';
 import '../../domain/usecases/get_movie_details_use_case.dart';
+import '../models/movie_model.dart';
 
 abstract class MovieDataSource {
   Future<Movie> getMovieDetails(GetMovieDetailsParams params);
@@ -28,18 +25,22 @@ class MovieDataSourceImpl implements MovieDataSource {
   Future<Movie> getMovieDetails(GetMovieDetailsParams params) async {
     try {
       final response = await _dio.get(
-          '${_appNetwork.getMovieDetails}${params.movieId}${_appNetwork.apiKeyPath}');
+        '${_appNetwork.getMovieDetails}${params.movieId}${_appNetwork.apiKeyPath}',
+      );
 
       try {
         final movie = MovieModel.fromJson(response.data);
+
         return movie;
       } catch (error) {
         throw const ParseDataException(
-            'Error ParseDataException - [getMovieDetails]');
+          'Error ParseDataException - [getMovieDetails]',
+        );
       }
     } on DioError catch (e) {
       throw SeverException(
-          'Error SeverException - [getMovieDetails] message: ${e.message}');
+        'Error SeverException - [getMovieDetails] message: ${e.message}',
+      );
     }
   }
 
@@ -53,14 +54,17 @@ class MovieDataSourceImpl implements MovieDataSource {
       try {
         final movies =
             (response.data as List).map((e) => MovieModel.fromJson(e));
+
         return movies.toList();
       } catch (error) {
         throw const ParseDataException(
-            'Error ParseDataException - [getMovieDetails]');
+          'Error ParseDataException - [getMovieDetails]',
+        );
       }
     } on DioError catch (e) {
       throw SeverException(
-          'Error SeverException - [getMovieDetails] message: ${e.message}');
+        'Error SeverException - [getMovieDetails] message: ${e.message}',
+      );
     }
   }
 }

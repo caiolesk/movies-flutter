@@ -5,7 +5,7 @@ import 'package:movies_flutter/app/modules/movie_detail/data/models/movie_model.
 import 'package:movies_flutter/app/modules/movie_detail/domain/entities/movie.dart';
 import 'package:movies_flutter/app/modules/movie_detail/domain/repositories/movie_repository.dart';
 import 'package:movies_flutter/app/modules/movie_detail/domain/usecases/get_movie_details_use_case.dart';
-import 'package:movies_flutter/app/modules/shared/domain/errors/Failure.dart';
+import 'package:movies_flutter/app/modules/shared/domain/errors/failure.dart';
 
 class MockMovieRepository extends Mock implements MovieRepository {}
 
@@ -22,7 +22,7 @@ final movieMock = Movie(
 
 final listMoviesMock = [movieMock];
 
-final movieId = 1;
+const movieId = 1;
 
 final movieParams = GetMovieDetailsParams(1);
 
@@ -46,7 +46,7 @@ final listMovieModelJson = [
     "poster_path": "url/photo",
     "vote_count": 10,
     "id": 1,
-  }
+  },
 ];
 
 final exceptionMock = Exception();

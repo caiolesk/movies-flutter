@@ -2,7 +2,6 @@ import 'package:dartz/dartz.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';
 import 'package:movies_flutter/app/modules/movie_detail/data/repositories/movie_repository_impl.dart';
-import 'package:movies_flutter/app/modules/shared/domain/usecases/base_usecase.dart';
 
 import '../../movie_mocks.dart';
 
