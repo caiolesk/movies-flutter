@@ -58,4 +58,11 @@ class MovieDetailsCubit extends Cubit<MovieDetailsState> {
       },
     );
   }
+
+  void setLiked() async {
+    emit(state.copyWith(
+      status: Status.success,
+      isLiked: !state.isLiked,
+    ));
+  }
 }

@@ -9,12 +9,14 @@ class MovieDetailsState extends Equatable {
   final Movie? movie;
   final List<Movie>? similarMovies;
   final Failure? failure;
+  final bool isLiked;
 
   const MovieDetailsState({
     this.status = Status.initial,
     this.movie,
     this.similarMovies,
     this.failure,
+    this.isLiked = false,
   });
 
   @override
@@ -22,18 +24,21 @@ class MovieDetailsState extends Equatable {
         status,
         movie,
         similarMovies,
+        isLiked,
       ];
   MovieDetailsState copyWith({
     Status? status,
     Movie? movie,
     List<Movie>? similarMovies,
     Failure? failure,
+    bool? isLiked,
   }) {
     return MovieDetailsState(
       status: status ?? this.status,
       movie: movie ?? this.movie,
       similarMovies: similarMovies ?? this.similarMovies,
       failure: failure ?? this.failure,
+      isLiked: isLiked ?? this.isLiked,
     );
   }
 }

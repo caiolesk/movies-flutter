@@ -17,7 +17,6 @@ class MovieDetailsPage extends StatefulWidget {
 
 class _MovieDetailsPageState extends State<MovieDetailsPage> {
   final MovieDetailsCubit cubit = Modular.get<MovieDetailsCubit>();
-  bool isLiked = false;
   @override
   void initState() {
     cubit.fetchData();
@@ -30,13 +29,16 @@ class _MovieDetailsPageState extends State<MovieDetailsPage> {
       body: BlocConsumer<MovieDetailsCubit, MovieDetailsState>(
         bloc: cubit,
         builder: (context, state) {
+          if (state.status.isLoading) return _loadingWidget();
           switch (state.status) {
-            case Status.loading:
-              return _loadingWidget();
             case Status.success:
               return _moviePage(
                 state.movie,
                 state.similarMovies,
+                state.isLiked,
+                () {
+                  cubit.setLiked();
+                },
               );
             default:
               return _errorWidget(
@@ -54,6 +56,8 @@ class _MovieDetailsPageState extends State<MovieDetailsPage> {
   Widget _moviePage(
     Movie? movie,
     List<Movie>? similarMovies,
+    bool isLiked,
+    VoidCallback onHeartTap,
   ) {
     return CustomScrollView(
       slivers: [
@@ -61,9 +65,7 @@ class _MovieDetailsPageState extends State<MovieDetailsPage> {
           child: _headerMovie(
             movie: movie,
             onImageTap: () {
-              setState(() {
-                isLiked = !isLiked;
-              });
+              onHeartTap();
             },
             isLiked: isLiked,
           ),
@@ -90,11 +92,12 @@ class _MovieDetailsPageState extends State<MovieDetailsPage> {
   }) {
     return Column(
       children: [
-        Image.network(
-          movie?.posterPath.imageUrlPath() ?? '',
-          height: 300,
-          fit: BoxFit.cover,
-        ),
+        if (movie?.posterPath.isNotEmpty == true)
+          Image.network(
+            movie?.posterPath.imageUrlPath() ?? '',
+            height: 300,
+            fit: BoxFit.cover,
+          ),
         Padding(
           padding: const EdgeInsets.all(16.0),
           child: Column(

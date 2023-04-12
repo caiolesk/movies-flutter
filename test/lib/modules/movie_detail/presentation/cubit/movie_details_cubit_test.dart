@@ -79,4 +79,24 @@ void main() {
       expect(cubit.state.status, Status.failure);
     });
   });
+
+  group('when [setLiked] is called', () {
+    test(
+      'should emit state with oposite of property of isLiked and status with success',
+      () async {
+        //arrange
+        final expectedIsLiked = !cubit.state.isLiked;
+        //act
+        cubit.setLiked();
+        //assert
+        expect(
+          cubit.state,
+          cubit.state.copyWith(
+            status: Status.success,
+            isLiked: expectedIsLiked,
+          ),
+        );
+      },
+    );
+  });
 }
