@@ -17,16 +17,29 @@ class MovieSimilarItemOrganism extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.only(),
-      child: Row(
+      padding: const EdgeInsets.only(
+        top: 16,
+        left: 16,
+        right: 16,
+      ),
+      child: Column(
         children: [
-          ImagePosterAtom(posterPath: posterPath),
-          Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: MovieSimilarInformationMolecule(
-              title: title,
-              releaseDate: releaseDate.split('-').first,
-            ),
+          Row(
+            children: [
+              ImagePosterAtom(posterPath: posterPath),
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: MovieSimilarInformationMolecule(
+                  title: title,
+                  releaseDate: releaseDate.split('-').first,
+                ),
+              ),
+            ],
+          ),
+          const SizedBox(height: 15),
+          Container(
+            color: Colors.grey,
+            height: .5,
           ),
         ],
       ),

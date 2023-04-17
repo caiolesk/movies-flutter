@@ -57,8 +57,7 @@ class MovieDetailsTemplate extends StatelessWidget {
               final similar =
                   similarMovies != null ? similarMovies![index] : null;
               if (similar != null) {
-                return Padding(
-                  padding: const EdgeInsets.all(16),
+                return InkWell(
                   child: MovieSimilarItemOrganism(
                     posterPath: similar.posterPath,
                     title: similar.originalTitle,
@@ -66,6 +65,8 @@ class MovieDetailsTemplate extends StatelessWidget {
                   ),
                 );
               }
+
+              return null;
             },
           ),
         ),
