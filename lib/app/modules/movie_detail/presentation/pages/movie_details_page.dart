@@ -5,9 +5,12 @@ import 'package:flutter_modular/flutter_modular.dart';
 import '../../../shared/utils/status.dart';
 import '../cubit/movie_details_cubit.dart';
 import '../cubit/movie_details_state.dart';
+import '../movie_details_module.dart';
 import '../templates/movie_details_template.dart';
 
 class MovieDetailsPage extends StatefulWidget {
+  static const routeName = '/details';
+  static const routePath = MovieDetailsModule.routePath + routeName;
   const MovieDetailsPage({super.key});
 
   @override

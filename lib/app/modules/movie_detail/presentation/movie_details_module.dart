@@ -8,6 +8,8 @@ import 'cubit/movie_details_cubit.dart';
 import 'pages/movie_details_page.dart';
 
 class MovieDetailsModule extends Module {
+  static const routeName = '/movie-details';
+  static const routePath = routeName;
   @override
   List<Bind<Object>> get binds => [
         Bind(
@@ -31,6 +33,10 @@ class MovieDetailsModule extends Module {
   List<ModularRoute> get routes => [
         ChildRoute(
           Modular.initialRoute,
+          child: (context, args) => const MovieDetailsPage(),
+        ),
+        ChildRoute(
+          MovieDetailsPage.routeName,
           child: (context, args) => const MovieDetailsPage(),
         ),
       ];
