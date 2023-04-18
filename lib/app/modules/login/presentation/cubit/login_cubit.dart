@@ -6,7 +6,7 @@ import '../../../shared/utils/status.dart';
 import '../../domain/entities/user.dart';
 import '../../domain/usecases/get_users_profiles_use_case.dart';
 import '../../domain/usecases/save_user_profile_use_case.dart';
-import '../login_navigator.dart';
+import '../../login_navigator.dart';
 import 'login_state.dart';
 
 class LoginCubit extends Cubit<LoginState> {

@@ -31,11 +31,13 @@ class MovieHeaderOrganism extends StatelessWidget {
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Text(
-                    movie!.originalTitle,
-                    style: const TextStyle(
-                      color: Colors.white,
-                      fontSize: 35,
+                  Expanded(
+                    child: Text(
+                      movie!.originalTitle,
+                      style: const TextStyle(
+                        color: Colors.white,
+                        fontSize: 35,
+                      ),
                     ),
                   ),
                   LikeButtonAtom(

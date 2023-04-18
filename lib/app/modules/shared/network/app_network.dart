@@ -3,5 +3,6 @@ class AppNetwork {
   final String apiKey = '468131cccdfc0754786fda8ed67a3fae';
 
   String get getMovieDetails => '${_baseUrl}movie/';
+  String get getTrendingMovies => '${_baseUrl}trending/movie/day';
   String get getSimilarMovies => '/similar';
 }

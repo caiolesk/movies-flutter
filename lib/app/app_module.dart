@@ -1,7 +1,7 @@
 import 'package:dio/dio.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 
-import 'modules/login/presentation/login_module.dart';
+import 'modules/login/login_module.dart';
 import 'modules/shared/network/app_network.dart';
 
 class AppModule extends Module {

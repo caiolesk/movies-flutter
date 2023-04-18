@@ -27,11 +27,13 @@ class MovieSimilarItemOrganism extends StatelessWidget {
           Row(
             children: [
               ImagePosterAtom(posterPath: posterPath),
-              Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: MovieSimilarInformationMolecule(
-                  title: title,
-                  releaseDate: releaseDate.split('-').first,
+              Expanded(
+                child: Padding(
+                  padding: const EdgeInsets.all(8),
+                  child: MovieSimilarInformationMolecule(
+                    title: title,
+                    releaseDate: releaseDate.split('-').first,
+                  ),
                 ),
               ),
             ],

@@ -1,11 +1,11 @@
 import 'package:flutter_modular/flutter_modular.dart';
 
-import '../data/datasources/movie_data_source.dart';
-import '../data/repositories/movie_repository_impl.dart';
-import '../domain/usecases/get_movie_details_use_case.dart';
-import '../domain/usecases/get_similar_movies_use_case.dart';
-import 'cubit/movie_details_cubit.dart';
-import 'pages/movie_details_page.dart';
+import 'data/datasources/movie_data_source.dart';
+import 'data/repositories/movie_repository_impl.dart';
+import 'domain/usecases/get_movie_details_use_case.dart';
+import 'domain/usecases/get_similar_movies_use_case.dart';
+import 'presentation/cubit/movie_details_cubit.dart';
+import 'presentation/pages/movie_details_page.dart';
 
 class MovieDetailsModule extends Module {
   static const routeName = '/movie-details';
@@ -25,6 +25,7 @@ class MovieDetailsModule extends Module {
           (i) => MovieDetailsCubit(
             getMovieDetailsUseCase: i(),
             getSimilarMoviesUseCase: i(),
+            params: MovieDetailsCubitParams(movie: i.args.data),
           ),
         ),
       ];
@@ -36,7 +37,7 @@ class MovieDetailsModule extends Module {
           child: (context, args) => const MovieDetailsPage(),
         ),
         ChildRoute(
-          MovieDetailsPage.routeName,
+          routeName,
           child: (context, args) => const MovieDetailsPage(),
         ),
       ];

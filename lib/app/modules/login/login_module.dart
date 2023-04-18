@@ -1,13 +1,13 @@
 import 'package:flutter_modular/flutter_modular.dart';
+import '../home/home_module.dart';
+import 'presentation/pages/login_page.dart';
 
-import '../../movie_detail/presentation/movie_details_module.dart';
-import '../data/datasources/login_data_source.dart';
-import '../data/repositories/login_repository_impl.dart';
-import '../domain/usecases/get_users_profiles_use_case.dart';
-import '../domain/usecases/save_user_profile_use_case.dart';
-import 'cubit/login_cubit.dart';
+import 'data/datasources/login_data_source.dart';
+import 'data/repositories/login_repository_impl.dart';
+import 'domain/usecases/get_users_profiles_use_case.dart';
+import 'domain/usecases/save_user_profile_use_case.dart';
 import 'login_navigator.dart';
-import 'pages/login_page.dart';
+import 'presentation/cubit/login_cubit.dart';
 
 class LoginModule extends Module {
   static const routeName = '/login-module';
@@ -36,8 +36,8 @@ class LoginModule extends Module {
           child: (context, args) => const LoginPage(),
         ),
         ModuleRoute(
-          MovieDetailsModule.routeName,
-          module: MovieDetailsModule(),
+          HomeModule.routeName,
+          module: HomeModule(),
         ),
       ];
 }

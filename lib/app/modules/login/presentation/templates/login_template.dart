@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import '../../../movie_detail/presentation/atoms/loading_atom.dart';
 import '../../../shared/constants/app_margins.dart';
 import '../../domain/entities/user.dart';
-import '../login_strings.dart';
+import '../../login_strings.dart';
 import '../organismis/login_profiles_organism.dart';
 
 class LoginTemplate extends StatelessWidget {

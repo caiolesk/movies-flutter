@@ -1,6 +1,8 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 
 import '../../../shared/utils/string_extensions.dart';
+import 'loading_atom.dart';
 
 class ImagePosterAtom extends StatelessWidget {
   final String posterPath;
@@ -11,11 +13,15 @@ class ImagePosterAtom extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Image.network(
-      posterPath.imageUrlPath(),
-      height: 100,
-      width: 90,
-      fit: BoxFit.cover,
+    return ClipRRect(
+      borderRadius: BorderRadius.all(Radius.circular(10)),
+      child: CachedNetworkImage(
+        imageUrl: posterPath.imageUrlPath(),
+        placeholder: (context, url) => const LoadingAtom(),
+        height: 130,
+        width: 100,
+        fit: BoxFit.cover,
+      ),
     );
   }
 }

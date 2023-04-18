@@ -1,6 +1,7 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../shared/utils/status.dart';
+import '../../domain/entities/movie.dart';
 import '../../domain/usecases/get_movie_details_use_case.dart';
 import '../../domain/usecases/get_similar_movies_use_case.dart';
 import 'movie_details_state.dart';
@@ -8,10 +9,12 @@ import 'movie_details_state.dart';
 class MovieDetailsCubit extends Cubit<MovieDetailsState> {
   final GetMovieDetailsUseCase getMovieDetailsUseCase;
   final GetSimilarMoviesUseCase getSimilarMoviesUseCase;
+  final MovieDetailsCubitParams params;
 
   MovieDetailsCubit({
     required this.getMovieDetailsUseCase,
     required this.getSimilarMoviesUseCase,
+    required this.params,
   }) : super(const MovieDetailsState());
 
   Future<void> fetchData() async {
@@ -24,7 +27,8 @@ class MovieDetailsCubit extends Cubit<MovieDetailsState> {
   }
 
   Future<void> _getMovie() async {
-    final result = await getMovieDetailsUseCase(GetMovieDetailsParams(12));
+    final result =
+        await getMovieDetailsUseCase(GetMovieDetailsParams(params.movie.id));
     result.fold(
       (failure) {
         emit(state.copyWith(
@@ -42,7 +46,8 @@ class MovieDetailsCubit extends Cubit<MovieDetailsState> {
   }
 
   Future<void> _getSimilarMovies() async {
-    final result = await getSimilarMoviesUseCase(GetMovieDetailsParams(12));
+    final result =
+        await getSimilarMoviesUseCase(GetMovieDetailsParams(params.movie.id));
     result.fold(
       (failure) {
         emit(state.copyWith(
@@ -65,4 +70,11 @@ class MovieDetailsCubit extends Cubit<MovieDetailsState> {
       isLiked: !state.isLiked,
     ));
   }
+}
+
+class MovieDetailsCubitParams {
+  final Movie movie;
+  MovieDetailsCubitParams({
+    required this.movie,
+  });
 }

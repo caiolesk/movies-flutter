@@ -4,38 +4,41 @@ import 'package:flutter_modular/flutter_modular.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 
 import '../../../shared/utils/status.dart';
-import '../../login_module.dart';
-import '../cubit/login_cubit.dart';
-import '../cubit/login_state.dart';
-import '../templates/login_template.dart';
+import '../../home_module.dart';
+import '../cubits/home_cubit.dart';
+import '../cubits/home_state.dart';
+import '../templates/home_template.dart';
 
-class LoginPage extends StatefulWidget {
-  static const routeName = '/login';
-  static const routePath = LoginModule.routePath + routeName;
-  const LoginPage({super.key});
+class HomePage extends StatefulWidget {
+  static const routeName = '/home';
+  static const routePath = HomeModule.routePath + routeName;
+  const HomePage({super.key});
 
   @override
-  State<LoginPage> createState() => _LoginPageState();
+  State<HomePage> createState() => _HomePageState();
 }
 
-class _LoginPageState extends State<LoginPage> {
-  final LoginCubit cubit = Modular.get();
+class _HomePageState extends State<HomePage> {
+  final HomeCubit cubit = Modular.get();
 
   @override
   void initState() {
-    super.initState();
     cubit.onInit();
+    super.initState();
   }
 
   @override
   Widget build(BuildContext context) {
-    return BlocConsumer<LoginCubit, LoginState>(
+    return BlocConsumer<HomeCubit, HomeState>(
       bloc: cubit,
       builder: (context, state) {
-        return LoginTemplate(
-          listUsersProfiles: state.usersProfiles ?? [],
+        return HomeTemplate(
+          onMovieClick: cubit.openMovieDetails,
           isLoading: state.status.isLoading,
-          onProfileClick: cubit.onProfileClick,
+          listNowPlaying: state.listNowPlaying,
+          listPopular: state.listPopular,
+          listTopRated: state.listTopRated,
+          listUpComing: state.listUpComing,
         );
       },
       listener: (context, state) {
@@ -51,7 +54,7 @@ class _LoginPageState extends State<LoginPage> {
           );
         }
       },
-      listenWhen: (previous, current) => previous.status != current.status,
+      listenWhen: (previous, current) => previous.failure != current.failure,
     );
   }
 }
