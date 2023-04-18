@@ -18,6 +18,8 @@ class ImagePosterAtom extends StatelessWidget {
       child: CachedNetworkImage(
         imageUrl: posterPath.imageUrlPath(),
         placeholder: (context, url) => const LoadingAtom(),
+        errorWidget: (context, url, error) =>
+            const Center(child: Icon(Icons.error)),
         height: 130,
         width: 100,
         fit: BoxFit.cover,

@@ -43,12 +43,8 @@ class HomeModule extends Module {
           child: (context, args) => const HomePage(),
         ),
         ChildRoute(
-          routeName,
+          HomePage.routeName,
           child: (context, args) => const HomePage(),
-        ),
-        ModuleRoute(
-          MovieDetailsModule.routeName,
-          module: MovieDetailsModule(),
         ),
       ];
 }

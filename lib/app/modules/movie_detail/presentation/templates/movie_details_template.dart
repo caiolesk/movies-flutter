@@ -50,6 +50,10 @@ class MovieDetailsTemplate extends StatelessWidget {
                 )
               : null,
         ),
+        if (similarMovies?.isEmpty == true)
+          const SliverFillRemaining(
+            child: Center(child: Text('Não existe resultados')),
+          ),
         SliverList(
           delegate: SliverChildBuilderDelegate(
             childCount: similarMovies?.length ?? 0,

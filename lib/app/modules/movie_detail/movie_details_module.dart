@@ -37,7 +37,7 @@ class MovieDetailsModule extends Module {
           child: (context, args) => const MovieDetailsPage(),
         ),
         ChildRoute(
-          routeName,
+          MovieDetailsPage.routeName,
           child: (context, args) => const MovieDetailsPage(),
         ),
       ];
